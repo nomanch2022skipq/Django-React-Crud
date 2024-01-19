@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 
+
 function Header() {
+  
+
   return (
     <div className='header'>
         
@@ -12,14 +15,19 @@ function Header() {
         
         <div className='links'>
 
-          <a href='/'>Home</a>
-          <a href='/form'>Add Products</a>
-          <a href='/login'>Login</a>
-          <a href='/logout'>Logout</a>
-          {/* <NavLink to='/'>Home</NavLink>e */}
-          {/* <Link to={'/form'}>Add Products</Link> */}
+        <NavLink to='/'>Home</NavLink>
+        <NavLink to='/form'>Add Products</NavLink>
 
-          <NavLink to="/">Home</NavLink>
+        {localStorage.getItem('access_token') === null ? 
+        <NavLink to='/login'>Login</NavLink> 
+        :
+        <NavLink to='/logout'>Logout</NavLink>}
+       
+        {/* <Link to={'/form'}>Add Products</Link> */}
+
+        
+        
+          
         
         </div>
 

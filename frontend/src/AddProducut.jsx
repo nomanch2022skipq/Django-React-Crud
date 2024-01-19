@@ -1,21 +1,41 @@
 import axios from 'axios'
 import React from 'react'
-import { useState} from 'react'
+import { useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 
 
 function Form() {
+  const navigate = useNavigate()
 
-  if (!localStorage.getItem('access_token')) {
-    window.location.href = '/login'
-  }
+  useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      return navigate('/login')
+    }
+  })
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
 
-  const navigate = useNavigate()
+  const [allProducts, setAllProducts] = useState('')
+
+  useEffect( () => {
+     axios({
+      method: 'get',
+      url: 'http://127.0.0.1:9001/api/products/',
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+      }}).then((response) => {
+        setAllProducts(response.data)
+        console.log(response.data)
+      }
+    )
+
+    
+  }, [])
+
+  
 
 
   const showData = async () => {
@@ -35,7 +55,7 @@ function Form() {
       
       console.log(response.data)
     }).then(() => {
-      navigate('/')
+      return navigate('/')
     }).catch(error => {
       console.log(error);
     })
@@ -50,6 +70,9 @@ function Form() {
       <input type="number" placeholder='Price' name='price' value={price} onChange={(e) => setPrice(e.target.value) }  />
       <input type="text" placeholder='Description' name='description' value={description} onChange={(e) => setDescription(e.target.value) }  />
 
+
+        
+    
 
       <button type='submit' onClick={showData}> Submit</button>
 

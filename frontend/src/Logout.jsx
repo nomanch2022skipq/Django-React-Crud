@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export const Logout = () => {
 
-    if (localStorage.getItem('access_token') === null) {
-        window.location.href = '/login'
-      }
+  const naviaget = useNavigate()
 
-    if (localStorage.getItem('access_token') !== null) {
-        window.location.href = '/'
-      }
+  localStorage.clear()
+
+  useEffect(() => {
+    return naviaget('/login')
+  })
 
     
   return (

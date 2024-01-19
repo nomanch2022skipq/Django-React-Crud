@@ -9,7 +9,7 @@ const Login = () => {
 
     let navigate = useNavigate()
     if (localStorage.getItem('access_token')) {
-        navigate('/')
+      return navigate('/')
     }
 
   const [username, setUsername] = useState('');
@@ -29,16 +29,19 @@ const Login = () => {
       url: 'http://localhost:9001/api/token/',
       data: formData,
     })
-    console.log(response.data.access)
+    // console.log(response.data.access)
     localStorage.setItem('access_token', response.data.access)
-    navigate('/')
+    if (localStorage.getItem('access_token')) {
+      return navigate('/')
     }
-    
+    }
     catch(error){
-        navigate('/login')
+        return navigate('/login')
         // console.error("Login failed",error)
     }
   }
+
+
   return (
     <div className="login-container">
       <h2>Login</h2>

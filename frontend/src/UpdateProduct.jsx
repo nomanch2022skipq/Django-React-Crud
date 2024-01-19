@@ -8,7 +8,7 @@ const UpdateProduct = () => {
   const navigate = useNavigate()
 
   if (!localStorage.getItem('access_token')) {
-    window.location.href = '/login'
+    return navigate('/login')
   }
 
   const base_url = 'http://127.0.0.1:9001/api/products/'
@@ -30,8 +30,7 @@ const UpdateProduct = () => {
         Authorization: 'Bearer ' + localStorage.getItem('access_token')
 
       }
-    })
-      .then(response => {
+    }).then(response => {
         setName(response.data.name);
         setPrice(response.data.price);
         setDescription(response.data.description);
@@ -55,11 +54,8 @@ const UpdateProduct = () => {
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('access_token')
       }
-    }).then((response) => {
-      console.log(response.data)
     }).then(() => {
-      localStorage.clear()
-      navigate('/')
+      return navigate('/')
     }).catch(error => {
       console.log(error);
     })
@@ -74,7 +70,7 @@ const UpdateProduct = () => {
       <input type="text" placeholder='Product Name' name='name' value={name} onChange={(e) => setName(e.target.value) }  />
       <input type="number" placeholder='Price' name='price' value={price} onChange={(e) => setPrice(e.target.value) }  />
       <input type="text" placeholder='Description' name='description' value={description} onChange={(e) => setDescription(e.target.value) }  />
-
+      
 
       <button type='submit' onClick={submitUpdate}> Submit</button>
 
