@@ -1,16 +1,18 @@
 // Login.js
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
 
-    let navigate = useNavigate()
+  let navigate = useNavigate()
+  useEffect(() => {
     if (localStorage.getItem('access_token')) {
       return navigate('/')
     }
+  } ,[])
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

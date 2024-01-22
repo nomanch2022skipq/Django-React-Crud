@@ -17,6 +17,7 @@ const UpdateProduct = () => {
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const productId = localStorage.getItem('product_id')
+  const [errorData, setError] = useState('')
 
 
 
@@ -57,6 +58,7 @@ const UpdateProduct = () => {
     }).then(() => {
       return navigate('/')
     }).catch(error => {
+      setError("Enter valid data and fill all data")
       console.log(error);
     })
 
@@ -66,6 +68,7 @@ const UpdateProduct = () => {
 
     <div className='input_data'>
       <h1>Update Product</h1>
+      {errorData ? <center><p style={{color:"red"}}>{errorData}</p></center> : null}
 
       <input type="text" placeholder='Product Name' name='name' value={name} onChange={(e) => setName(e.target.value) }  />
       <input type="number" placeholder='Price' name='price' value={price} onChange={(e) => setPrice(e.target.value) }  />

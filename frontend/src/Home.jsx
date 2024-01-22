@@ -4,9 +4,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom'
 import Header from "./Header";
+import { useReducer } from "react";
 
 
 const ProductsData = (props) => {
+  if (!localStorage.getItem('access_token')) {
+        return navigate('/login')
+        
+      }
 
     const navigate = useNavigate()
     
@@ -14,31 +19,10 @@ const ProductsData = (props) => {
     const base_url = 'http://127.0.0.1:9001/api/products/'
     const [productData, setProductData] = useState([]);
     // const navigate = useNavigate()
-
-    const deleteProduct = async (productId) => {
-      await axios(
-        {
-          method: 'delete',
-          url: base_url + productId + "/",
-          headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token')
-          }
-        }
-      )
-      .then(response => {
-        console.log("Data Deleted");
-       navigate('/')
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    }
+    
 
     useEffect(  () => {
-      if (!localStorage.getItem('access_token')) {
-        return navigate('/login')
-        
-      }
+      
       axios({
           method: 'get',
           url: base_url,
@@ -56,7 +40,27 @@ const ProductsData = (props) => {
           .catch(error => {
             console.log(error);
           });
-      },[]);
+      },[productData]);
+
+    const deleteProduct = async (productId) => {
+      await axios(
+        {
+          method: 'delete',
+          url: base_url + productId + "/",
+          headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('access_token')
+          }
+        }
+      )
+      .then(response => {
+        console.log("id " + productId+" deleted");
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
+
+    
 
       
 
