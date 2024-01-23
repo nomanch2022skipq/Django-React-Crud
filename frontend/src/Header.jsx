@@ -3,9 +3,12 @@ import { NavLink, Link } from 'react-router-dom'
 
 
 
-function Header() {
+function Header(props) {
   
-  
+  useEffect(() => {
+    
+  }  
+  , [props.productData])
 
   return (
     <div className='header'>

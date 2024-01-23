@@ -9,15 +9,19 @@ function Form() {
   const navigate = useNavigate()
 
   
-    if (!localStorage.getItem('access_token')) {
-      return navigate('/login')
-    }
+    
   
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
   const [errorData, setError] = useState('')
+
+  useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      return navigate('/login')
+    }
+  } ,[])
 
 
   const showData = async () => {

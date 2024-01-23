@@ -8,10 +8,7 @@ import { useReducer } from "react";
 
 
 const ProductsData = (props) => {
-  if (!localStorage.getItem('access_token')) {
-        return navigate('/login')
-        
-      }
+  
 
     const navigate = useNavigate()
     
@@ -22,6 +19,13 @@ const ProductsData = (props) => {
     
 
     useEffect(  () => {
+
+      if (!localStorage.getItem('access_token')) {
+        return navigate('/login')
+        
+      }
+
+      <Header product={productData} />
       
       axios({
           method: 'get',

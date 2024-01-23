@@ -6,13 +6,10 @@ import { useNavigate } from "react-router-dom";
 const UpdateProduct = () => {
 
   const navigate = useNavigate()
+  
 
-  if (!localStorage.getItem('access_token')) {
-    return navigate('/login')
-  }
-
+  
   const base_url = 'http://127.0.0.1:9001/api/products/'
-  const [productDataId, setProductDataID] = useState("");
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
@@ -22,6 +19,10 @@ const UpdateProduct = () => {
 
 
   useEffect(() => {
+    if (!localStorage.getItem('access_token')) {
+      return navigate('/login')
+    }
+  
     axios({
 
       method: 'get',
