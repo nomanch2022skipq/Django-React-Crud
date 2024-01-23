@@ -2,6 +2,7 @@ import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate, Navigate } from 'react-router-dom'
+import secureLocalStorage from 'react-secure-storage'
 
 
 const Register = () => {
@@ -37,8 +38,8 @@ const Register = () => {
                 url: 'http://127.0.0.1:9001/api/token/',
                 data: formLoginData,
               }).then(response => {
-                localStorage.setItem('access_token', response.data.access);
-                localStorage.setItem('refresh_token', response.data.refresh);
+                secureLocalStorage.setItem('access_token', response.data.access);
+                secureLocalStorage.setItem('refresh_token', response.data.refresh);
                 navigate('/products')
               }).catch(error => {
                 console.log(error);

@@ -5,22 +5,24 @@ import { useNavigate } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom'
 import Header from "./Header";
 import { useReducer } from "react";
-
+import secureLocalStorage from "react-secure-storage";
 
 const ProductsData = (props) => {
+
   
+    
 
     const navigate = useNavigate()
     
 
-    const base_url = 'http://127.0.0.1:9001/api/products/'
+    const base_url = import.meta.env.VITE_APP_BASE_URL_PRODUCTS
     const [productData, setProductData] = useState([]);
     // const navigate = useNavigate()
     
 
     useEffect(  () => {
 
-      if (!localStorage.getItem('access_token')) {
+      if (!secureLocalStorage.getItem('access_token')) {
         return navigate('/login')
         
       }
@@ -32,7 +34,7 @@ const ProductsData = (props) => {
           url: base_url,
           headers: {
 
-            Authorization: 'Bearer ' + localStorage.getItem('access_token')
+            Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
 
           }
             
@@ -52,7 +54,7 @@ const ProductsData = (props) => {
           method: 'delete',
           url: base_url + productId + "/",
           headers: {
-            Authorization: 'Bearer ' + localStorage.getItem('access_token')
+            Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
           }
         }
       )
@@ -69,12 +71,14 @@ const ProductsData = (props) => {
       
 
       const editProduct = (productId) => {
-        localStorage.setItem('product_id', productId)
+        secureLocalStorage.setItem('product_id', productId)
         return navigate('/updateproduct/' + productId + '/')
       }
   
     return (
+      
       <div className="dashboard-container">
+        
         <h2>Product Dashboard</h2>
         <div className="table-container">
           <table className="data-table">

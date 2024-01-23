@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import secureLocalStorage from 'react-secure-storage'
 
 export const Logout = () => {
 
@@ -7,8 +8,8 @@ export const Logout = () => {
 
 
   useEffect(() => {
-  localStorage.clear()
-  return naviaget('/login')
+    secureLocalStorage.clear()
+    return naviaget('/login')
   })
 
     

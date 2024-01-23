@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import secureLocalStorage from 'react-secure-storage';
 
 function Header(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access_token'));
+  const [isLoggedIn, setIsLoggedIn] = useState(!!secureLocalStorage.getItem('access_token'));
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
+    const token = secureLocalStorage.getItem('access_token');
     setIsLoggedIn(!!token);
-  }, [localStorage.getItem('access_token')]);
+  }, [secureLocalStorage.getItem('access_token')]);
 
   return (
     <div className='header'>

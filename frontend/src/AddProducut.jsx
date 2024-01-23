@@ -32,7 +32,7 @@ function Form() {
 
     await axios({
       method: 'post',
-      url: 'http://127.0.0.1:9001/api/products/',
+      url: import.meta.env.VITE_APP_BASE_URL_PRODUCTS,
       data: formData,
       headers: {
         Authorization: 'Bearer ' + localStorage.getItem('access_token')

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import secureLocalStorage from "react-secure-storage";
 
 
 const UpdateProduct = () => {
@@ -9,17 +10,17 @@ const UpdateProduct = () => {
   
 
   
-  const base_url = 'http://127.0.0.1:9001/api/products/'
+  const base_url = import.meta.env.VITE_APP_BASE_URL_PRODUCTS
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
-  const productId = localStorage.getItem('product_id')
+  const productId = secureLocalStorage.getItem('product_id')
   const [errorData, setError] = useState('')
 
 
 
   useEffect(() => {
-    if (!localStorage.getItem('access_token')) {
+    if (!secureLocalStorage.getItem('access_token')) {
       return navigate('/login')
     }
   
@@ -29,7 +30,7 @@ const UpdateProduct = () => {
       url: base_url + productId + "/",
       headers: {
 
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+        Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
 
       }
     }).then(response => {
@@ -54,7 +55,7 @@ const UpdateProduct = () => {
       url: base_url + productId + "/",
       data: formData,
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+        Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
       }
     }).then(() => {
       return navigate('/')

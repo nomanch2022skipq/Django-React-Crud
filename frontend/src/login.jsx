@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import secureLocalStorage from 'react-secure-storage';
 
 
 const Login = () => {
 
   let navigate = useNavigate()
   useEffect(() => {
-    if (localStorage.getItem('access_token')) {
+    if (secureLocalStorage.getItem('access_token')) {
       return navigate('/')
     }
   } ,[])
@@ -32,8 +33,8 @@ const Login = () => {
       data: formData,
     })
     // console.log(response.data.access)
-    localStorage.setItem('access_token', response.data.access)
-    if (localStorage.getItem('access_token')) {
+    secureLocalStorage.setItem('access_token', response.data.access)
+    if (secureLocalStorage.getItem('access_token')) {
       return navigate('/')
     }
     }
