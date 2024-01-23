@@ -44,7 +44,7 @@ const ProductsData = (props) => {
           .catch(error => {
             console.log(error);
           });
-      },[productData]);
+      },[]);
 
     const deleteProduct = async (productId) => {
       await axios(

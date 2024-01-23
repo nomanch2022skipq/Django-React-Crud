@@ -5,10 +5,10 @@ export const Logout = () => {
 
   const naviaget = useNavigate()
 
-  localStorage.clear()
 
   useEffect(() => {
-    return naviaget('/login')
+  localStorage.clear()
+  return naviaget('/login')
   })
 
     

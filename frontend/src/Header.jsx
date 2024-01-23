@@ -1,46 +1,30 @@
-import React, {useEffect} from 'react'
-import { NavLink, Link } from 'react-router-dom'
-
-
+import React, { useEffect, useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 function Header(props) {
-  
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access_token'));
+
   useEffect(() => {
-    
-  }  
-  , [props.productData])
+    const token = localStorage.getItem('access_token');
+    setIsLoggedIn(!!token);
+  }, [localStorage.getItem('access_token')]);
 
   return (
     <div className='header'>
-        
-        <div>
+      <div>
         <h1>hello</h1>
-        </div>
-        
-        <div className='links'>
-
+      </div>
+      <div className='links'>
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/form'>Add Products</NavLink>
-
-        {localStorage.getItem('access_token') === null ? 
-        <NavLink to='/login'>Login</NavLink> 
-        :
-        <NavLink to='/logout'>Logout</NavLink>}
-       
-        {/* <Link to={'/form'}>Add Products</Link> */}
-
-        
-        
-          
-        
-        </div>
-
-
-
-        
-      
+        {isLoggedIn ? (
+          <NavLink to='/logout'>Logout</NavLink>
+        ) : (
+          <NavLink to='/login'>Login</NavLink>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Header
+export default Header;
