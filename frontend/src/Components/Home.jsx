@@ -6,10 +6,12 @@ import { NavLink, Link } from 'react-router-dom'
 import Header from "./Header";
 import { useReducer } from "react";
 import secureLocalStorage from "react-secure-storage";
+// import toast, { Toaster } from 'react-hot-toast';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ProductsData = (props) => {
 
-  
+ 
     
 
     const navigate = useNavigate()
@@ -27,7 +29,6 @@ const ProductsData = (props) => {
         
       }
 
-      <Header product={productData} />
       
       axios({
           method: 'get',
@@ -46,7 +47,7 @@ const ProductsData = (props) => {
           .catch(error => {
             console.log(error);
           });
-      },[]);
+      },[productData]);
 
     const deleteProduct = async (productId) => {
       await axios(
@@ -60,6 +61,7 @@ const ProductsData = (props) => {
       )
       .then(response => {
         console.log("id " + productId+" deleted");
+        
       })
       .catch(error => {
         console.log(error);
@@ -74,10 +76,27 @@ const ProductsData = (props) => {
         secureLocalStorage.setItem('product_id', productId)
         return navigate('/updateproduct/' + productId + '/')
       }
+      
+
+      const ToastDelete = (product_name) => {
+        toast.error("Product " + product_name + " Deleted",
+        {
+          position: "bottom-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          toastId: product_name
+        });
+      };
   
     return (
       
       <div className="dashboard-container">
+      
+
         
         <h2>Product Dashboard</h2>
         <div className="table-container">
@@ -102,7 +121,7 @@ const ProductsData = (props) => {
                     <button
                       className="deleteButton"
                       type="button"
-                      onClick={() => deleteProduct(product.id)}
+                      onClick={() => deleteProduct(product.id).then(ToastDelete(product.name))}
                     >
                       Delete
                     </button>
@@ -113,6 +132,8 @@ const ProductsData = (props) => {
                     >
                       Edit
                     </button>
+                  
+                    
                   </td>
                 </tr>
               ))}

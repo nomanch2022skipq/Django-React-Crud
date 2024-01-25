@@ -2,6 +2,9 @@ import axios from 'axios'
 import React from 'react'
 import { useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+
+import secureLocalStorage from 'react-secure-storage'
 
 
 
@@ -18,7 +21,7 @@ function Form() {
   const [errorData, setError] = useState('')
 
   useEffect(() => {
-    if (!localStorage.getItem('access_token')) {
+    if (!secureLocalStorage.getItem('access_token')) {
       return navigate('/login')
     }
   } ,[])
@@ -35,12 +38,13 @@ function Form() {
       url: import.meta.env.VITE_APP_BASE_URL_PRODUCTS,
       data: formData,
       headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+        Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
       }
     }).then((response) => {
-      
+      toast.success("Product Added")
       console.log(response.data)
     }).then(() => {
+      
       return navigate('/')
     }).catch(error => {
       setError("Enter valid data and fill all data")

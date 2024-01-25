@@ -1,35 +1,58 @@
+import React, { useEffect, useState, useRef } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar';
 import './App.css';
-import ProductsData from './Home.jsx';
-import Form from './AddProducut.jsx';
-import Header from './Header.jsx';
-import UpdateProduct from './UpdateProduct.jsx';
-import Login from './login.jsx';
-import { Route , Routes } from 'react-router-dom';
-import { Logout } from './Logout.jsx';
-import Register from './Register.jsx';
 
-
-
+import Header from './Components/Header.jsx';
+import ProductsData from './Components/Home.jsx';
+import Form from './Components/AddProducut.jsx';
+import UpdateProduct from './Components/UpdateProduct.jsx';
+import Login from './Components/login.jsx';
+import { Logout } from './Components/Logout.jsx';
+import Register from './Components/Register.jsx';
 
 function App() {
-  return <div>
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const location = useLocation();
+  const loadingBarRef = useRef(null);
 
-    <Header />  
-    <Routes>
+  useEffect(() => {
+    const simulateLoading = () => {
+      setLoadingProgress(40);
 
-      <Route exact path="/" element={<ProductsData />} />
-      <Route exact path="/form" element={<Form />} />
-      <Route exact path="/updateproduct/:id" element={<UpdateProduct />} />
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="/logout" element={<Logout />} />
-      <Route exact path="/register" element={<Register />} />
+      setTimeout(() => {
+        setLoadingProgress(70);
 
-      
-      <Route exact path="*" element={<Login />} />
+        setTimeout(() => {
+          setLoadingProgress(100);
+          // Complete loading and stop the LoadingBar
+          loadingBarRef.current.complete();
+        }, 500);
+      }, 500);
+    };
 
-      
-    </Routes>
-  </div>;
+    // Simulate loading on route change
+    loadingBarRef.current.continuousStart();
+    simulateLoading();
+  }, [location.pathname]); // Trigger effect when the route changes
+
+  return (
+    <div>
+      <Header />
+      <LoadingBar color="#fca503" ref={loadingBarRef} height={3} />
+
+      <Routes>
+        <Route exact path="/" element={<ProductsData />} />
+        <Route exact path="/form" element={<Form />} />
+        <Route exact path="/updateproduct/:id" element={<UpdateProduct />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/logout" element={<Logout />} />
+        <Route exact path="/register" element={<Register />} />
+
+        <Route path="*" element={<Login />} />
+      </Routes>
+    </div>
+  );
 }
 
 export default App;

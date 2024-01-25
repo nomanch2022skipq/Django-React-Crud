@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import secureLocalStorage from 'react-secure-storage';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -29,16 +30,19 @@ const Login = () => {
     try{
     const response = await axios({
       method: 'post',
-      url: 'http://localhost:9001/api/token/',
+      url: import.meta.env.VITE_APP_BASE_URL_LOGIN,
       data: formData,
     })
     // console.log(response.data.access)
     secureLocalStorage.setItem('access_token', response.data.access)
     if (secureLocalStorage.getItem('access_token')) {
+      secureLocalStorage.setItem('Username', username)
+      toast.success(`Welcome ${username}`.toUpperCase())
       return navigate('/')
     }
     }
     catch(error){
+      toast.error("Incorrect Username or Password")
         return navigate('/login')
         // console.error("Login failed",error)
     }
