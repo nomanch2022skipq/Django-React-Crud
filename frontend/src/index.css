@@ -18,7 +18,7 @@ code {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  height: 60px;
+  height: 100px;
   background-color: #282c34;
   color: white;
 }
@@ -113,7 +113,7 @@ code {
 button.editButtom {
   background-color: #3498db; /* Choose your desired color */
   color: #fff; /* Text color */
-  padding: 8px 15px; /* Adjust padding as needed */
+  /* padding: 8px 15px; Adjust padding as needed */
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -173,7 +173,7 @@ body {
   font-family: sans-serif;
   background-color: #f5f5f5;
   margin: 0;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .dashboard-container {

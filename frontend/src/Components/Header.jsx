@@ -13,7 +13,7 @@ function Header(props) {
   return (
     <div className='header'>
       <div>
-        <h1>hello</h1>
+        <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/my-recipes-logo.png" height={150} alt="" />
       </div>
       <div className='links'>
         
