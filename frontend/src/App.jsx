@@ -39,7 +39,7 @@ function App() {
   return (
     <div>
       <Header />
-      <LoadingBar color="#fca503" ref={loadingBarRef} height={3} />
+      <LoadingBar color="#fca503" ref={loadingBarRef} height={2} />
 
       <Routes>
         <Route exact path="/" element={<ProductsData />} />
