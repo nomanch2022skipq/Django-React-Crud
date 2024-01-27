@@ -37,7 +37,9 @@ const Login = () => {
     secureLocalStorage.setItem('access_token', response.data.access)
     if (secureLocalStorage.getItem('access_token')) {
       secureLocalStorage.setItem('Username', username)
-      toast.success(`Welcome ${username}`.toUpperCase())
+      toast.success(`Welcome ${username}`.toUpperCase(),{
+        position: "bottom-right"
+      })
       return navigate('/')
     }
     }

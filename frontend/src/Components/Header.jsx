@@ -16,8 +16,14 @@ function Header(props) {
         <h1>hello</h1>
       </div>
       <div className='links'>
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/form'>Add Products</NavLink>
+        
+      { isLoggedIn && [
+        <NavLink key="home" to='/'>Home</NavLink>,
+        <NavLink key="form" to='/form'>Add Products</NavLink>
+      ]}
+
+        { !isLoggedIn && <NavLink to='/register'>Register</NavLink>}
+        
         {isLoggedIn ? (
           <NavLink to='/logout'>Logout</NavLink>
         ) : (

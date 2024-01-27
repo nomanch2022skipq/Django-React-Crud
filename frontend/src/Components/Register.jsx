@@ -33,6 +33,7 @@ const Register = () => {
             url: 'http://127.0.0.1:9001/api/createusers/',
             data: formRegisterData,
           }).then( async () => {
+            secureLocalStorage.setItem('Username', username)
             await axios({
                 method: 'post',
                 url: 'http://127.0.0.1:9001/api/token/',

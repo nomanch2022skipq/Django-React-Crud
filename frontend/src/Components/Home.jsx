@@ -20,9 +20,10 @@ const ProductsData = (props) => {
     const base_url = import.meta.env.VITE_APP_BASE_URL_PRODUCTS
     const [productData, setProductData] = useState([]);
     // const navigate = useNavigate()
+    const [num, setNum] = useState(0)
     
-
     useEffect(  () => {
+      
 
       if (!secureLocalStorage.getItem('access_token')) {
         return navigate('/login')
@@ -47,7 +48,7 @@ const ProductsData = (props) => {
           .catch(error => {
             console.log(error);
           });
-      },[productData]);
+      },[num]);
 
     const deleteProduct = async (productId) => {
       await axios(
@@ -121,7 +122,7 @@ const ProductsData = (props) => {
                     <button
                       className="deleteButton"
                       type="button"
-                      onClick={() => deleteProduct(product.id).then(ToastDelete(product.name))}
+                      onClick={() => deleteProduct(product.id).then(setNum(num + 1)).then(ToastDelete(product.name))}
                     >
                       Delete
                     </button>

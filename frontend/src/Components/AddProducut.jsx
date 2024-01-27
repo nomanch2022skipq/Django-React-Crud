@@ -41,7 +41,9 @@ function Form() {
         Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
       }
     }).then((response) => {
-      toast.success("Product Added")
+      toast.success("Product Added", {
+        position: "bottom-right"
+      })
       console.log(response.data)
     }).then(() => {
       

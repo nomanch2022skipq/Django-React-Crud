@@ -10,7 +10,9 @@ export const Logout = () => {
   
 
   useEffect(() => {
-    toast.success(`Bye Bye ${secureLocalStorage.getItem('Username')}`.toUpperCase())
+    toast.success(`Bye Bye ${secureLocalStorage.getItem('Username')}`.toUpperCase(),{
+      position: "bottom-right"
+    })
     secureLocalStorage.clear()
     return naviaget('/login')
   })

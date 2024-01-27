@@ -140,3 +140,9 @@ REST_FRAMEWORK = {
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=365),
 }
+
+
+EMAIL_HOST = "sandbox.smtp.mailtrap.io"
+EMAIL_HOST_USER = "8edb3fa24c93c1"
+EMAIL_HOST_PASSWORD = "2796ed2faeb6ee"
+EMAIL_PORT = "2525"
