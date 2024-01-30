@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { NavLink, Link } from 'react-router-dom'
 import Header from "./Header";
 import { useReducer } from "react";
@@ -97,6 +97,24 @@ const ProductsData = (props) => {
           console.log('Error in CategoryViseData:', error);
         });
       };
+
+      const readMore = (productId) => {
+        axios({
+          method: 'get',
+          url: base_url + productId + "/",
+          headers: {
+            Authorization: 'Bearer ' + secureLocalStorage.getItem('access_token')
+          }
+        })
+          .then(response => {
+            console.log(response.data);
+            secureLocalStorage.setItem('recipe_id', productId)
+            navigate("/recipe/"+productId+"/", {state: response.data})
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
       
 
     // const deleteProduct = async (productId) => {
