@@ -44,7 +44,9 @@ const Login = () => {
     }
     }
     catch(error){
-      toast.error("Incorrect Username or Password")
+      toast.error("Incorrect Username or Password",{
+        position: "bottom-right"
+      })
         return navigate('/login')
         // console.error("Login failed",error)
     }
@@ -73,7 +75,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button type="button" onClick={handleLogin}>
+        <button type="button" className='btn-btn' onClick={handleLogin}>
           Login
         </button>
       </form>

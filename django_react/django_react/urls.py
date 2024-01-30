@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import ProductViewSet, CreateUserViewSet
+from api.views import (
+    ProductViewSet,
+    CreateUserViewSet,
+    CategoryViewSet,
+    ProductWithCategoryViewSet,
+)
 
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (
@@ -27,8 +32,12 @@ from rest_framework_simplejwt.views import (
 
 
 router = DefaultRouter()
-router.register("products", ProductViewSet)
-router.register("createusers", CreateUserViewSet)
+router.register("products", ProductViewSet, basename="products")
+router.register("createusers", CreateUserViewSet, basename="createusers")
+router.register("categories", CategoryViewSet, basename="categories")
+router.register(
+    "productsincategory", ProductWithCategoryViewSet, basename="productsincategory"
+)
 
 
 urlpatterns = [

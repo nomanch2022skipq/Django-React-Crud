@@ -10,6 +10,7 @@ import UpdateProduct from './Components/UpdateProduct.jsx';
 import Login from './Components/login.jsx';
 import { Logout } from './Components/Logout.jsx';
 import Register from './Components/Register.jsx';
+import CategoryViseProduct from './Components/CategoryViseProduct.jsx';
 
 function App() {
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -43,6 +44,7 @@ function App() {
 
       <Routes>
         <Route exact path="/" element={<ProductsData />} />
+        <Route exact path="/products" element={<CategoryViseProduct />} />
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/updateproduct/:id" element={<UpdateProduct />} />
         <Route exact path="/login" element={<Login />} />

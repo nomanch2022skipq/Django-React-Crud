@@ -7,8 +7,16 @@ from django.contrib.auth.hashers import make_password
 
 
 class ProductSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source="category.name", read_only=True)
+
     class Meta:
         model = ProductModel
+        fields = ["id", "name", "price", "description", "created_at", "category_name"]
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CategoryModel
         fields = "__all__"
 
 

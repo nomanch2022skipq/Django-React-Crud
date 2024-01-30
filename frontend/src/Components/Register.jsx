@@ -86,7 +86,7 @@ const Register = () => {
 
             {/* <input type="hidden" name="is_active" id='is_active' value={true} /> */}
     
-            <button type="button" onClick={handleRegister}>
+            <button type="button" className='btn-btn' onClick={handleRegister}>
               Register
             </button>
           </form>

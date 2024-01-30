@@ -155,17 +155,18 @@ input {
   margin-bottom: 16px;
 }
 
-button {
-  padding: 10px;
-  background-color: #007bff;
+.btn-btn {
+  padding: 15px;
+  background-color: #34495e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  
 }
 
-button:hover {
-  background-color: #0056b3;
+.btn-btn:hover {
+  background-color: #2a3b4d;
 }
 
 /* General styling */
@@ -195,17 +196,15 @@ h2 {
 }
 
 /* Table styling */
-.table-container {
-  overflow-x: auto; /* Enable horizontal scrolling for long tables */
-}
 
-.data-table {
+
+/* .data-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-}
+} */
 
-th,
+/* th,
 td {
   padding: 10px;
   text-align: left;
@@ -221,7 +220,7 @@ th {
 tr:hover {
   background-color: #f5f5f5;
   /* Updated hover color */
-}
+} */
 
 /* Button styling */
 /* Button styling */
@@ -253,3 +252,70 @@ tr:hover {
   color: #218838; /* Darker green */
   background-color: #f5f5f5; /* Added background color change on hover */
 }
+
+
+/* Basic Styles */
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-heading {
+  margin-bottom: 20px;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-row td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f0f0f0;
+}
+
+/* .deleteButton, .editButton {
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+}
+
+.editButton {
+  background-color: #3498db;
+} */

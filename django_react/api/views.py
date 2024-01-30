@@ -19,4 +19,20 @@ class CreateUserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     queryset = get_user_model().objects.all()
 
-    
+
+class CategoryViewSet(ModelViewSet):
+    serializer_class = CategorySerializer
+    queryset = CategoryModel.objects.all()
+    permission_classes = [IsAuthenticated]
+
+
+class ProductWithCategoryViewSet(ModelViewSet):
+    serializer_class = ProductSerializer
+    # queryset = ProductModel.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        category_id = self.request.query_params.get("category_id")
+        if not category_id:
+            return Response({"error": "category_id is required"}, status=400)
+        return ProductModel.objects.filter(category=category_id)

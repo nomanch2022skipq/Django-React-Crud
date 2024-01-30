@@ -19,7 +19,7 @@ function Header(props) {
         
       { isLoggedIn && [
         <NavLink key="home" to='/'>Home</NavLink>,
-        <NavLink key="form" to='/form'>Add Products</NavLink>
+        // <NavLink key="form" to='/form'>Add Products</NavLink>
       ]}
 
         { !isLoggedIn && <NavLink to='/register'>Register</NavLink>}
