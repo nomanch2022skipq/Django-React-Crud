@@ -75,7 +75,7 @@ const ProductsData = (props) => {
         
 
       const CategoryViseData = (categoryId) => {
-        console.log('CategoryViseData called with categoryId:', categoryId);
+        // console.log('CategoryViseData called with categoryId:', categoryId);
       
         setProductData([]);
         axios({
@@ -90,9 +90,9 @@ const ProductsData = (props) => {
           mode : 'cors'
           
         }).then(response => {
-          console.log('Response from server:', response.data);
+          // console.log('Response from server:', response.data);
           setProductData(response.data);
-          console.log('productData:', productData);
+          // console.log('productData:', productData);
         }).catch(error => {
           console.log('Error in CategoryViseData:', error);
         });
@@ -179,13 +179,13 @@ const ProductsData = (props) => {
           <h1>Recipes</h1>
         </div>
         <table className="styled-table">
-    <thead>
-    <tr>
+      <thead>
+      <tr>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>
             <th>Description</th>
-            <th>Created At</th>
+            {/* <th>Created At</th> */}
             <th>Action</th>
           </tr>
     </thead>
@@ -195,10 +195,10 @@ const ProductsData = (props) => {
               <td>{product.name}</td>
               <td>{product.category_name}</td>
               <td>{product.price} Rs</td>
-              <td>{product.description.slice(0,12)}</td>
-              <td>{product.created_at.slice(0, 10)}</td>
+              <td>{product.description.slice(0,70)}  .....</td>
+              {/* <td>{product.created_at.slice(0, 10)}</td> */}
               <td className="action_btn">
-              <button
+                <button
                   className="readMore"
                   type="button"
                   onClick={() => readMore(product.id)}

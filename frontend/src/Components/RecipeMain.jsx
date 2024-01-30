@@ -57,9 +57,9 @@ const RecipeMain = () => {
 
   useEffect(() => {
     setData(location.state);
-    console.log(location.state);
+    // console.log(location.state);
     setCreateDate(createDate(location.state.created_at));
-    console.log(typeof location.state.created_at);
+    // console.log(typeof location.state.created_at);
   }, [location.state]);
 
   return (
