@@ -25,7 +25,7 @@ const ProductsData = (props) => {
     const [data, setData] = useState([])
 
     
-    useLayoutEffect(() => {
+    useEffect(() => {
       
 
       if (!secureLocalStorage.getItem('access_token')) {

@@ -29,8 +29,8 @@ function App() {
           setLoadingProgress(100);
           // Complete loading and stop the LoadingBar
           loadingBarRef.current.complete();
-        }, 500);
-      }, 500);
+        }, 100);
+      }, 100);
     };
 
     // Simulate loading on route change
@@ -49,7 +49,7 @@ function App() {
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/updateproduct/:id" element={<UpdateProduct />} />
         <Route exact path="/recipe/:id" element={<RecipeMain />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/login/" element={<Login />} />
         <Route exact path="/logout" element={<Logout />} />
         <Route exact path="/register" element={<Register />} />
 

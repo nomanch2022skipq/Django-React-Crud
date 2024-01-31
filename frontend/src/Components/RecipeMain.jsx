@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './RecipeMain.css';
+import secureLocalStorage from 'react-secure-storage';
 
 const RecipeMain = () => {
   const [data, setData] = useState([]);
@@ -56,6 +57,10 @@ const RecipeMain = () => {
   };
 
   useEffect(() => {
+    if (!secureLocalStorage.getItem('access_token')) {
+      return navigate('/login');
+    }
+
     setData(location.state);
     // console.log(location.state);
     setCreateDate(createDate(location.state.created_at));
