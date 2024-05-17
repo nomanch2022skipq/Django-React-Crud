@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -108,7 +108,6 @@ code {
   background-color: #ff3b3b;
 }
 
-
 /* Add this CSS to your existing stylesheet or in the style tag of your component */
 button.editButtom {
   background-color: #3498db; /* Choose your desired color */
@@ -126,8 +125,6 @@ button.editButtom {
 button.editButtom:hover {
   background-color: #2980b9; /* Adjust hover color as needed */
 }
-
-
 
 /* Login.css */
 
@@ -162,7 +159,6 @@ input {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
 .btn-btn:hover {
@@ -197,7 +193,6 @@ h2 {
 
 /* Table styling */
 
-
 /* .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -220,7 +215,8 @@ th {
 tr:hover {
   background-color: #f5f5f5;
   /* Updated hover color */
-} */
+}
+*/
 
 /* Button styling */
 /* Button styling */
@@ -252,7 +248,6 @@ tr:hover {
   color: #218838; /* Darker green */
   background-color: #f5f5f5; /* Added background color change on hover */
 }
-
 
 /* Basic Styles */
 .categories-container {

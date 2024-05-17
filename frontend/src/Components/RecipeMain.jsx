@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import './RecipeMain.css';
-import secureLocalStorage from 'react-secure-storage';
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import "./RecipeMain.css";
+import secureLocalStorage from "react-secure-storage";
 
 const RecipeMain = () => {
   const [data, setData] = useState([]);
   const location = useLocation();
-  const [create_Date, setCreateDate] = useState('');
+  const [create_Date, setCreateDate] = useState("");
 
   const createDate = (timestampString) => {
     const timestamp = new Date(timestampString);
@@ -35,19 +35,19 @@ const RecipeMain = () => {
     // Function to format time difference
     const formatTimeDifference = (time) => {
       if (time < 60) {
-        return `${time} second${time !== 1 ? 's' : ''}`;
+        return `${time} second${time !== 1 ? "s" : ""}`;
       } else if (time < 3600) {
         const minutes = Math.floor(time / 60);
-        return `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+        return `${minutes} minute${minutes !== 1 ? "s" : ""}`;
       } else if (time < 86400) {
         const hours = Math.floor(time / 3600);
-        return `${hours} hour${hours !== 1 ? 's' : ''}`;
+        return `${hours} hour${hours !== 1 ? "s" : ""}`;
       } else if (time < 31536000) {
         const days = Math.floor(time / 86400);
-        return `${days} day${days !== 1 ? 's' : ''}`;
+        return `${days} day${days !== 1 ? "s" : ""}`;
       } else {
         const years = Math.floor(time / 31536000);
-        return `${years} year${years !== 1 ? 's' : ''}`;
+        return `${years} year${years !== 1 ? "s" : ""}`;
       }
     };
 
@@ -57,8 +57,8 @@ const RecipeMain = () => {
   };
 
   useEffect(() => {
-    if (!secureLocalStorage.getItem('access_token')) {
-      return navigate('/login');
+    if (!secureLocalStorage.getItem("access_token")) {
+      return navigate("/login");
     }
 
     setData(location.state);
@@ -83,7 +83,9 @@ const RecipeMain = () => {
             <p className="product-price">Price: ${data.price}</p>
             <p className="product-category">Category: {data.category_name}</p>
             <p className="product-created-at">Created at: {create_Date}</p>
-            <p className="product-description">Description: {data.description}</p>
+            <p className="product-description">
+              Description: {data.description}
+            </p>
           </div>
         </div>
       </div>

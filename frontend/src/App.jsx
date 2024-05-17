@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import LoadingBar from 'react-top-loading-bar';
-import './App.css';
+import React, { useEffect, useState, useRef } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
+import "./App.css";
 
-import Header from './Components/Header.jsx';
-import ProductsData from './Components/Home.jsx';
-import Form from './Components/AddProducut.jsx';
-import UpdateProduct from './Components/UpdateProduct.jsx';
-import Login from './Components/login.jsx';
-import { Logout } from './Components/Logout.jsx';
-import Register from './Components/Register.jsx';
-import CategoryViseProduct from './Components/CategoryViseProduct.jsx';
-import RecipeMain from './Components/RecipeMain.jsx';
+import Header from "./Components/Header.jsx";
+import ProductsData from "./Components/Home.jsx";
+import Form from "./Components/AddProducut.jsx";
+import UpdateProduct from "./Components/UpdateProduct.jsx";
+import Login from "./Components/login.jsx";
+import { Logout } from "./Components/Logout.jsx";
+import Register from "./Components/Register.jsx";
+import CategoryViseProduct from "./Components/CategoryViseProduct.jsx";
+import RecipeMain from "./Components/RecipeMain.jsx";
 
 function App() {
   const [loadingProgress, setLoadingProgress] = useState(0);
